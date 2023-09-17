@@ -7,7 +7,7 @@
     <title>Toshka Blog | {{ $title }}</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="bg-red-400">
+<body>
     @include('partials.navbar')
 
     <div class="container px-16 py-16">

@@ -4,9 +4,11 @@
 @section('container')
     <article class="mb-5">
         <h1 class="text-3xl font-bold">{{ $post->title }}</h1>
-        <p>By. Sandhika Galih in <a href="/categories/{{ $post->category->slug }}">
-            {{ $post->category->name }}</p>
-            </a> 
+        <p>By. 
+            <a href="/authors/{{ $post->author->username }}">{{ $post->author->name}}</a>
+            in 
+            <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a> 
+        </p>
         {!! $post->body !!}
     </article>
     
