@@ -10,8 +10,7 @@
 <body>
     @include('partials.navbar')
 
-    <div class="container px-16 py-16">
-        @yield('container')
-    </div>
+    @yield('container')
+    
 </body>
 </html>

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     links.forEach((link) => {
         if (link.getAttribute("href") === window.location.pathname) {
             link.classList.add("active");
+            link.classList.remove("hover:bg-gray-100")
         }
     });
 });
