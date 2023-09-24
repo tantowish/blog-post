@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Models\Category;
-use App\Models\User;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +49,16 @@ Route::get('/categories', function(){
         'categories' => Category::all()
     ]);
 });
+
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'auth'])->name('login');
+
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth');
 
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('posts', [
