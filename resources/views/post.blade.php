@@ -6,9 +6,9 @@
         <div class="mb-10">
             <h1 class="text-3xl font-bold lg:text-4xl">{{ $post->title }}</h1>
             <p class="mb-5 text-sm lg:text-base lg:mb-10">By. 
-                <a href="/authors/{{ $post->author->username }}">{{ $post->author->name}}</a>
+                <a href="/posts?author={{ $post->author->username }}">{{ $post->author->name}}</a>
                 in 
-                <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a> 
+                <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a> 
             </p>
             <div class="rounded-t-lg object-cover bg-no-repeat">
                 <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" alt="{{ $post->category->name }}" />
