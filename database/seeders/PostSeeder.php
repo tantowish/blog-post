@@ -66,6 +66,6 @@ class PostSeeder extends Seeder
         // ]);
 
 
-        Post::factory(20)->create();
+        Post::factory(45)->create();
     }
 }
