@@ -27,7 +27,7 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="w-0 px-6 py-3">
                         No
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -36,7 +36,7 @@
                     <th scope="col" class="px-6 py-3">
                         Category
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="w- px-6 py-3">
                         ACtion
                     </th>
                 </tr>
@@ -48,12 +48,12 @@
                         {{ $id++ }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $post->title }}
+                        {{ Str::limit($post->title, 100 , '...') }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $post->category->name }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 flex flex-col md:flex-row">
                         <a href="/dashboard/posts/{{ $post->slug }}">
                             <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center mr-2 mb-2">
                                 <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
