@@ -28,8 +28,12 @@
                 in 
                 <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a> 
             </p>
-            <div class="rounded-t-lg object-cover bg-no-repeat">
+            <div class="rounded-t-lg bg-cover bg-no-repeat max-h-[350px] overflow-hidden flex items-center">
+                @if ($post->image)
+                    <img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->category->name }}" />
+                @else
                 <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" alt="{{ $post->category->name }}" />
+                @endif
             </div>            
             <article class="flex flex-col mt-5 text-justify tracking-wide leading-relaxed lg:mt-10 gap-2 lg:gap-3">
                 {!! $post->body !!}

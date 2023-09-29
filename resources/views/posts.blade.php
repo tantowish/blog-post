@@ -34,9 +34,14 @@
     <div class="relative mb-10 text-center w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a class="absolute bg-opacity-50 rounded-tl-lg rounded-br-lg bg-slate-800 p-2 text-sm left-0 top-0 text-white lg:p-3 lg:text-base" href="/posts?category={{ $posts[0]->category->slug }}">{{ $posts[0]->category->name }}</a>
         <a href="/posts/{{ $posts[0]->slug  }}">
-            <div class="rounded-t-lg bg-cover" style="background-image: url('https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}'); background-repeat: no-repeat;">
-                <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}" alt="{{ $posts[0]->category->name }}" />
-              </div>
+            <div class="rounded-t-lg bg-cover" style="background-image: url('{{ asset('storage/'.$posts[0]->image) }}'); background-repeat: no-repeat;">
+                <div class="rounded-t-lg bg-cover max-h-[300px] overflow-hidden flex items-center">
+                    @if ($posts[0]->image)
+                        <img src="{{ asset('storage/'.$posts[0]->image) }}" alt="{{ $posts[0]->category->name }}" />
+                    @else
+                        <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}" alt="{{ $posts[0]->category->name }}" />
+                    @endif
+                </div>                  </div>
         </a>
         <div class="p-5">
             <a href="/posts/{{ $posts[0]->slug  }}">
@@ -55,14 +60,18 @@
     </div> 
 
 
-
-
     <div class="lg:grid lg:grid-cols-3 gap-4">
         @foreach ($posts->skip(1) as $post)
             <div class="relative mb-5 text-center w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a class="absolute bg-opacity-50 rounded-tl-lg rounded-br-lg bg-slate-800 p-2 text-sm left-0 top-0 text-white lg:p-3 lg:text-base" href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a>
                 <a href="/posts/{{ $posts[0]->slug  }}">
-                    <img class="rounded-t-lg" src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" alt="{{ $post->category->name }}" />
+                    <div class="rounded-t-lg bg-cover bg-no-repeat max-h-[350px] overflow-hidden flex items-center">
+                        @if ($post->image)
+                            <img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->category->name }}" />
+                        @else
+                            <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" alt="{{ $post->category->name }}" />
+                        @endif
+                    </div>    
                 </a>
                 <div class="p-5">
                     <a href="/posts/{{ $post->slug  }}">

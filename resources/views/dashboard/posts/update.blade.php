@@ -5,7 +5,7 @@
     <h1 class="text-center text-2xl font-bold mb-3 lg:text-3xl lg:mb-5 text-slate-800">Edit Post</h1>
     <hr>
 </div>
-<form class="max-w-3xl" method="post" action="/dashboard/posts/{{ $post->slug }}">
+<form class="max-w-3xl" method="post" action="/dashboard/posts/{{ $post->slug }}" enctype="multipart/form-data">
     @method('put')
     @csrf
     <div class="mb-6">
@@ -44,6 +44,21 @@
         @enderror
         
     </div>
+
+    <div class="mb-6">
+        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Image</label>
+        <input type="hidden" name="oldImage" value="{{ $post->image }}">
+        @if ($post->image)
+        <img src="{{ asset('storage/'.$post->image) }}" class="img-preview max-h-[300px] mb-5">
+        @else
+        <img class="img-preview max-h-[300px] mb-5">
+        @endif
+        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="image" name="image" type="file" onchange="previewImage()">
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+        @error('image')
+            <div class="text-xs text-red-600">{{ $message }}</div>
+        @enderror
+    </div>
     
     <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3.5 py-2.5 text-center mr-2 mb-2">Update Post</button>
 </form>
@@ -75,6 +90,23 @@
     document.addEventListener('trix-file-accept', function(e){
         e.preventDefault();
     })
+
+    
+    function previewImage(){
+            const image = document.querySelector('#image')
+            const imgPreview = document.querySelector('.img-preview')
+
+            imgPreview.style.display = 'block'
+
+           
+            const oFReader = new FileReader()
+            oFReader.readAsDataURL(image.files[0]);
+            
+            oFReader.onload = function(oFREvent){
+                imgPreview.src = oFREvent.target.result
+    
+            };
+        }
 
 </script>
 @endsection

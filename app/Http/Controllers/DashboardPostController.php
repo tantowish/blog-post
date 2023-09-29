@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage; 
 
 
 class DashboardPostController extends Controller
@@ -38,19 +39,25 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->file('image')->store('img/post-images');
+        // return $request->file('image')->store('img/post-images');
         
         $validatedData = $request->validate([
             'title'=> 'required|max:255',
             'slug'=>'required|unique:posts',
-            'category'=>'required', // Change 'category' to 'category_id'
+            'image' => 'image|file|max:1024',
+            'category'=>'required',
             'body'=> 'required'
         ]);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('img/post-images');
+        }
 
         $postAttributes = [
             'title' => $validatedData['title'],
             'slug' => $validatedData['slug'],
-            'category_id' => $validatedData['category'], // Map to the correct database column
+            'image' => $validatedData['image'],
+            'category_id' => $validatedData['category'],
             'body' => $validatedData['body']
         ];
 
@@ -92,9 +99,11 @@ class DashboardPostController extends Controller
     {
         $rules = [
             'title'=> 'required|max:255',
-            'category'=>'required', // Change 'category' to 'category_id'
+            'category'=>'required',
+            'image' => 'image|file|max:1024',
             'body'=> 'required'
         ];
+
 
         if($request->slug != $post->slug){
             $rules['slug'] = 'required|unique:posts';
@@ -105,10 +114,18 @@ class DashboardPostController extends Controller
 
         $validatedData = $request->validate($rules);
 
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('img/post-images');
+        }
+
         $postAttributes = [
             'title' => $validatedData['title'],
             'slug' => $validatedData['slug'],
-            'category_id' => $validatedData['category'], // Map to the correct database column
+            'image' => $validatedData['image'],
+            'category_id' => $validatedData['category'],
             'body' => $validatedData['body']
         ];
 
@@ -125,8 +142,11 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        Post::destroy($post->id);
+        if($post->image){
+            Storage::delete($post->image);
+        }
 
+        Post::destroy($post->id);
         return redirect('/dashboard/posts')->with('succes', 'Post has been deleted!');
     }
 

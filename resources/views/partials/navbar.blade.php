@@ -1,11 +1,11 @@
 <nav class="bg-white dark:bg-gray-900 w-full shadow-sm">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="\" class="flex items-center">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BlogYuk</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Blog-post</span>
         </a>
         <div class="flex  md:order-2">
             @auth
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="cursor-pointer text-base font-medium">welcome, <span class="cursor-pointer text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br cursor-default mr-3">{{ auth()->user()->name }}</span></button>
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="cursor-pointer text-base font-medium">welcome, <span class="cursor-pointer text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br mr-3">{{ auth()->user()->name }}</span></button>
                 <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                       <li>
