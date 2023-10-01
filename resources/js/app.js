@@ -13,32 +13,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     var currentUrl = window.location.pathname;
-    var desiredRoute = "/dashboard/posts";
     const sidebars = document.querySelectorAll("#sidebar");
-    // sidebars.forEach((sidebar) => {
-    //     if (sidebar.getAttribute("href") === currentUrl) {
-    //         sidebar.classList.add("active");
-    //         sidebar.classList.remove("hover:bg-gray-100")
-    //         const firstChild = sidebar.firstElementChild
-    //         firstChild.classList.remove("group-hover:text-gray-900")
-    //         firstChild.classList.add("active-sidebar")
-    //     }
-    // });
-    if (sidebars[0].getAttribute("href") === currentUrl) {
-        sidebars[0].classList.add("active");
-        sidebars[0].classList.remove("hover:bg-gray-100")
-        const firstChild = sidebars[0].firstElementChild
-        firstChild.classList.remove("group-hover:text-gray-900")
-        firstChild.classList.add("active-sidebar")
-    }
-    if (sidebars[1].getAttribute("href") === currentUrl || currentUrl.startsWith(desiredRoute)) {
-        sidebars[1].classList.add("active");
-        sidebars[1].classList.remove("hover:bg-gray-100")
-        const firstChild = sidebars[1].firstElementChild
-        firstChild.classList.remove("group-hover:text-gray-900")
-        firstChild.classList.add("active-sidebar")
-    }
+    sidebars.forEach((sidebar) => {
+        if (sidebar.getAttribute("href") === currentUrl) {
+            sidebar.classList.add("active");
+            sidebar.classList.remove("hover:bg-gray-100")
+            const firstChild = sidebar.firstElementChild
+            firstChild.classList.remove("group-hover:text-gray-900")
+            firstChild.classList.add("active-sidebar")
+        }
+    });
+    // if (sidebars[0].getAttribute("href") === currentUrl) {
+    //     sidebars[0].classList.add("active");
+    //     sidebars[0].classList.remove("hover:bg-gray-100")
+    //     const firstChild = sidebars[0].firstElementChild
+    //     firstChild.classList.remove("group-hover:text-gray-900")
+    //     firstChild.classList.add("active-sidebar")
+    // }
+    // if (sidebars[1].getAttribute("href") === currentUrl || currentUrl.startsWith(desiredRoute)) {
+    //     sidebars[1].classList.add("active");
+    //     sidebars[1].classList.remove("hover:bg-gray-100")
+    //     const firstChild = sidebars[1].firstElementChild
+    //     firstChild.classList.remove("group-hover:text-gray-900")
+    //     firstChild.classList.add("active-sidebar")
+    // }
 
+    // if (sidebars[2].getAttribute("href") === currentUrl || currentUrl.startsWith(desiredRoute)) {
+    //     sidebars[2].classList.add("active");
+    //     sidebars[2].classList.remove("hover:bg-gray-100")
+    //     const firstChild = sidebars[2].firstElementChild
+    //     firstChild.classList.remove("group-hover:text-gray-900")
+    //     firstChild.classList.add("active-sidebar")
+    // }
     
     // function previewImage(){
     //     const image = document.querySelector('#image')

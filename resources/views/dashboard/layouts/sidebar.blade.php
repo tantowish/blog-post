@@ -17,5 +17,18 @@
              </a>
           </li>
        </ul>
+
+
+       @can('admin')
+       <h2 class="p-2 ml-2 mt-5 font-semibold text-lg text-slate-700">Administrator</h2>
+       <ul class="space-y-2 font-medium">
+         <li>
+            <a id="sidebar" href="/dashboard/categories" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+               <span class="flex-1 ml-3 whitespace-nowrap">Post Categories</span>
+            </a>
+         </li>
+       </ul>
+       @endcan
     </div>
  </aside>

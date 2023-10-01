@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="mb-3 lg:mb-5">
-        <h1 class="text-center text-2xl font-bold mb-3 lg:text-3xl lg:mb-5 text-slate-800">My Posts</h1>
+        <h1 class="text-center text-2xl font-bold mb-3 lg:text-3xl lg:mb-5 text-slate-800">Post Categories</h1>
         <hr>
     </div>
 
@@ -19,7 +19,7 @@
     @endif
 
     <div>
-        <a href="/dashboard/posts/create">
+        <a href="/dashboard/categories/create">
             <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Create</button>
         </a>
     </div>
@@ -31,46 +31,42 @@
                         No
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Title
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         Category
                     </th>
-                    <th scope="col" class="w- px-6 py-3">
+                    <th scope="col" class="px-6 py-3">
+                        Slug
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Action
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($posts as $post)  
+                @foreach ($categories as $category)  
                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $id++ }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ Str::limit($post->title, 100 , '...') }}
+                        {{ $category->name }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $post->category->name }}
+                        {{ $category->slug }}
                     </td>
                     <td class="px-6 py-4 flex flex-col md:flex-row">
-                        <a href="/dashboard/posts/{{ $post->slug }}">
-                            <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center mr-2 mb-2">
-                                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                            </button>
-                        </a>
-                        <a href="/dashboard/posts/{{ $post->slug }}/edit">
+                        <a href="/dashboard/categories/{{ $category->id }}/edit">
                             <button type="button" class="text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-emerald-800 font-medium rounded-lg text-sm px-3 py-2 text-center mr-2 mb-2">
                                 <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                             </button>
                         </a>
-                        <form action="/dashboard/posts/{{ $post->slug }}" method="post">
+                        <form action="/dashboard/categories/{{ $category->id }}" method="post">
                             @method('delete')
                             @csrf
                             <button type="submit" class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-3 py-2 text-center mr-2 mb-2" onclick="return confirm('Are you sure?')">
                                 <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                             </button>
-                        </form>  
+                        </form> 
+                        
                     </td>
                 </tr>
                 @endforeach

@@ -2,9 +2,9 @@
 
 
 @section('container')
-<div class="px-16 py-16  lg:px-36">
+<div class="p-8 lg:px-36 lg:py-32">
     <div class="flex  justify-between flex-wrap">
-        <h1 class="w-full text-4xl font-bold mb-5 lg:w-1/2">
+        <h1 class="w-full text-2xl lg:text-4xl font-bold mb-5 lg:w-1/2">
             {{ $title }}
         </h1>
         <div class="w-full mb-10 lg:w-1/3">
@@ -90,16 +90,10 @@
             </div> 
         @endforeach
     </div>
-
     @else
     <p class="text-center text-xl">No post found</p>
     @endif
 
     <div>{{ $posts->links() }}</div>
-    
-
-
-    
-
-    @endsection
 </div>
+@endsection

@@ -11,7 +11,8 @@ class RegisterController extends Controller
 {
     public function index(){
         return view('register.index',[
-            "title"=>'Register'
+            "title"=>'Register',
+            "email"=>null
         ]);
     }
 
@@ -33,5 +34,12 @@ class RegisterController extends Controller
 
 
         return redirect('/login');
+    }
+
+    public function indexHome(Request $request){
+        return view('register.index',[
+            "title"=>'Register',
+            "email"=>$request->email
+        ]);
     }
 }
