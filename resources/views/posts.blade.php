@@ -65,7 +65,7 @@
             <div class="relative mb-5 text-center w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a class="absolute bg-opacity-50 rounded-tl-lg rounded-br-lg bg-slate-800 p-2 text-sm left-0 top-0 text-white lg:p-3 lg:text-base" href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a>
                 <a href="/posts/{{ $posts[0]->slug  }}">
-                    <div class="rounded-t-lg bg-cover bg-no-repeat max-h-[350px] overflow-hidden flex items-center">
+                    <div class="rounded-t-lg bg-cover bg-no-repeat max-h-[150px] overflow-hidden flex items-center">
                         @if ($post->image)
                             <img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->category->name }}" />
                         @else

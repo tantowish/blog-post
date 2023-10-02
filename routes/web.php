@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\About;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +21,11 @@ use App\Http\Controllers\AboutController;
 |
 */
 
-Route::get('/', function () {
-    return view('home',[
-        "title" => "Home",
-    ]);
-});
+// Route::get('/', function () {
+//     return view('home',[
+//         "title" => "Home",
+//     ]);
+// });
 
 // Route::get('/about', function () {
 //     return view('about',[
@@ -35,6 +35,7 @@ Route::get('/', function () {
 //         "path" => "tanto.jpg"
 //     ]);
 // });
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
