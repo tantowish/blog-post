@@ -8,7 +8,7 @@
         <h1 class="font-bold text-3xl mb-4 lg:mb-5 lg:text-5xl">Elevating Web <span class="text-blue-500">Blogging </span>Experiences</h1>
         <p class="mb-5 ">Our mission is to elevate web blogging experiences by providing a platform that empowers bloggers to share their stories, insights, and passions with the world. We believe in the power of words to inspire, inform, and connect people, and we're here to support bloggers every step of the way as they craft and share their unique voices on the web.</p>
         <a href="/register">
-            <button data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200" type="button" class="w-full lg:w-1/3 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 lg:py-3 text-center mr-2 mb-2">Sing Up for Free</button>
+            <button data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200" type="button" class="w-full lg:w-1/3 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 lg:py-3 text-center mr-2 mb-2">Sign Up for Free</button>
         </a>
     </div>
     <div data-aos="fade-up-left" data-aos-duration="500" data-aos-delay="200"  class="w-full lg:w-1/2">
