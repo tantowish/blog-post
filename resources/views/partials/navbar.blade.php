@@ -1,5 +1,5 @@
-<nav class="bg-white max-w-6xl lg:px-8 mx-auto dark:bg-gray-900 w-full shadow-sm z-[999]">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+<nav class="bg-white  mx-auto dark:bg-gray-900 w-full shadow-sm z-[999]">
+    <div class="max-w-6xl lg:px-8 flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="\" class="flex items-center">
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Blog<span class="text-blue-500">post</span></span>
         </a>
